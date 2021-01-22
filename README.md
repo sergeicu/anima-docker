@@ -40,7 +40,7 @@ You can also build your own Docker image.
 This is only necessary if you are planning to add more functionality to the Anima containerized application. 
 
 ```
-name=sergeicu/anima-docker:latest   
+name=sergeicu/anima:latest   
 sudo docker build --no-cache -t $name .
 ```
 
@@ -95,8 +95,8 @@ There are two options:
 A. Write a script and place it locally inside the container (fast) 
 B. Write a script and invoke docker image externally for every file (slow) 
 
-For A. - you will need to re-build the Docker image. Example with instructions is provided [here]().
-For B. - you can use the pre-built image that you pulled from Dockerhub. Example with instructions is provided [here]().
+For A. - you will need to re-build the Docker image. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/inside_docker.md).
+For B. - you can use the pre-built image that you pulled from Dockerhub. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/outside_docker.md).
 
 # Suggestions / Improvements
 
