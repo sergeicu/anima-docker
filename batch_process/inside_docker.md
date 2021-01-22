@@ -9,5 +9,5 @@ By default - the Dockerfile container will run `src/run_anima.py` when it is ins
 In other words -   
 `sudo docker run --it --rm sergeicu/anima:latest` will invoke `src/run_anima.py` inside the Docker container.   
 
-However - 
+However -   
 `sudo docker run --it --rm sergeicu/anima:latest /bin/bash` will place you directly inside the Docker container and will NOT invoke the python script. This is because the Dockerfile specifies `CMD ["python", "/run_anima.py"]`, instead of `ENTRYPOINT ["python", "/run_anima.py"]`
