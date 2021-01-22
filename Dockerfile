@@ -20,19 +20,7 @@ RUN apt-get install -y python3-pip python3-dev \
 COPY src/run_anima.py /
 RUN chmod 666 /run_anima.py
 
-#ENTRYPOINT ["python", "/run_anima.py"]
 CMD ["python", "/run_anima.py"]
 
 
 
-# To build it: 
-# cd ~/code/mwf/synth_unet/train_anima/
-#sudo docker build -t sergeicu/anima_t2_only_exec:latest .
-#sudo docker build --no-cache -t sergeicu/anima_t2_only_exec:latest .
-
-# To run it: 
-# sudo docker run --rm sergeicu/anima_t2_only_exec
-# sudo docker run --rm sergeicu/anima_t2_only_exec python run_anima.py
-# sudo docker run -it --rm sergeicu/anima_t2_only_exec python run_anima.py
-# data=/fileserver/abd/serge/code/docker/anima/example_data
-# sudo docker run -it --rm -v $data:/data sergeicu/anima_t2_only_exec python run_anima.py /data
