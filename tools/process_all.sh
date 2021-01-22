@@ -10,7 +10,7 @@ cp ~/abd/code/docker/anima/example_data/input.nii.gz .
 
 # run_anima.py test 
 data=/home/ch215616/fastscratch/trash/example_data2
-python ~/code/mwf/synth_unet/train_anima/run_anima.py $data
+python ~/code/mwf/synth_unet/train_anima/src/run_anima.py $data
 
 # build a new docker image with the file 
 cd ~/code/mwf/synth_unet/train_anima/
@@ -21,12 +21,12 @@ sudo docker run -it --rm -v $data:/data sergeicu/anima_t2_only_exec echo "hello 
 
 # run docker image to process anima 
 data=/home/ch215616/fastscratch/trash/example_data2
-sudo docker run -it --rm -v $data:/data sergeicu/anima_t2_only_exec python run_anima.py /data
+sudo docker run -it --rm -v $data:/data sergeicu/anima_t2_only_exec python src/run_anima.py /data
 
 # create a script that fetches the argv and runs the whole thing 
 data=/home/ch215616/fastscratch/trash/example_data2/v2 
 cd ~/code/mwf/synth_unet/train_anima 
-./anima_docker.sh $data 
+./run_anima_docker.sh $data 
 
 
 
@@ -48,10 +48,10 @@ cp ${indir}*[0-9].nii.gz $outdir
 # run docker - volunteer 
 data=~/fastscratch/TEMP_anima/volunteer/anima/
 cd ~/code/mwf/synth_unet/train_anima 
-./anima_docker.sh $data 
+./run_anima_docker.sh $data 
 
 # run docker - clinical
 data=~/fastscratch/TEMP_anima/clinical/anima/
 cd ~/code/mwf/synth_unet/train_anima 
-./anima_docker.sh $data 
+./run_anima_docker.sh $data 
 
