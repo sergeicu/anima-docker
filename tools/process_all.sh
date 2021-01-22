@@ -1,3 +1,6 @@
+### Experiments conducted on MS and volunteer MWF datasets at BCH - running Anima on ALL available data ###
+
+### 1. TEST DOCKER
 # create test directory 
 cd ~
 cd ~/fastscratch/trash/TEMP_ABD_FULL
@@ -24,6 +27,10 @@ sudo docker run -it --rm -v $data:/data sergeicu/anima_t2_only_exec python run_a
 data=/home/ch215616/fastscratch/trash/example_data2/v2 
 cd ~/code/mwf/synth_unet/train_anima 
 ./anima_docker.sh $data 
+
+
+
+### 2. Run Anima on ALL available subjects
 
 # create a copy of all the raw data files - clinical 
 outdir=~/fastscratch/TEMP_anima/clinical/anima/
