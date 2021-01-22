@@ -1,5 +1,7 @@
 # anima-docker
 
+[Install instructions](https://github.com/sergeicu/anima-docker/install-docker.md) 
+
 
 4. (optional) Pull Ubuntu 18.04 
 
