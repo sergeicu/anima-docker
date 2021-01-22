@@ -1,6 +1,6 @@
 # Warning 
 
-This is a separate branch of Anima docker github repository that is dedicated to enablinh a single Anima function ONLY - namely - estimation of Gaussian Mixture T2 components from CPMG sequence data.  
+This is a separate branch of Anima docker github repository that is dedicated to a single Anima function ONLY - estimation of Gaussian Mixture T2 components from CPMG sequence data.  
 
 We use the following command to achieve this - `animaGMMT2RelaxometryEstimation` 
 
