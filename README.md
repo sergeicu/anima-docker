@@ -2,7 +2,7 @@
 
 A Docker image for [Anima software](https://github.com/Inria-Visages/Anima-Public) - a medical image processing tool from Empenn, Inria. 
 
-A Docker container will provide a hardware and software agnostic access to all Anima functionalities, without the need to install dependencies or to compile from source. 
+This Docker image provides a hardware and a software agnostic access to all Anima functionalities, without the need to install dependencies or to compile from source. 
 
 This Docker image is built on top of [Ubuntu 18.04 Docker base image](https://hub.docker.com/_/ubuntu), with a copy of [matching Anima binaries](https://github.com/Inria-Visages/Anima-Public/releases). 
 
@@ -15,7 +15,7 @@ Anima software functionalities [include tools for](https://anima.readthedocs.io/
 - MR denoising
 - Basic image processing tools
  
-# Install 
+# Install Docker
 
 [Install Docker](https://github.com/sergeicu/anima-docker/blob/main/install-docker.md) 
 
@@ -27,13 +27,17 @@ You can pull a ready-made Anima image from dockerhub registry directly.
 name=sergeicu/anima:latest
 sudo docker pull $name
 ```
+Web location of the image: https://hub.docker.com/u/sergeicu
+
+Notes: 
+- use `sudo docker images` to view all your images 
 
 # Build 
 
 [optional]
 
-You can also build your own Docker image. 
-This is only necessary if you are planning to add more functionality to Anima containerized application. 
+You can also build your own Docker image.   
+This is only necessary if you are planning to add more functionality to the Anima containerized application. 
 
 ```
 name=sergeicu/anima-docker:latest   
@@ -48,9 +52,12 @@ Use `$name` that follows dockerhub convention = <dockerhub_username>/<docker_nam
 ## Interactively:   
 `sudo docker run -it --rm $name`   
 
-## Interactively, with access to your local filesystem. 
+Notes: 
+- type `exit` to kill the container 
+- `--rm` removes the container upon exit 
+- use `sudo docker ps` to view actively running containers and `sudo docker ps -a` to view all 
 
-Your local filesystem be mounted on `/data` in the container:   
+## Interactively, with access to your local filesystem. 
 
 ```
 localfolder=/full_path_to_folder_on_your_machine/
@@ -58,57 +65,34 @@ chmod ugo+rwx $localfolder
 sudo docker run -it --rm -v $localfolder:/data $name
 ```
 
-IMPORTANT: you must give full read-write permissions to `$localfolder` for _all_ users.  
+Notes: 
+- `$localfolder` lives in `/data` inside the container 
+- you must give full read-write permissions to `$localfolder` for _all_ users to avoid Docker errors
+- all anima binaries are stored in `/anima` folder inside the container. 
+
 
 ## Run an Anima command on an individual file, without entering the container: 
 
-An example of a [Gaussian T2 mixture estimation](https://anima.readthedocs.io/en/latest/relaxometry.html):
+An example with [Gaussian T2 mixture estimation](https://anima.readthedocs.io/en/latest/relaxometry.html) command:
 
 ```
 cmd=/anima/animaGMMT2RelaxometryEstimation
 localfolder=/full_path_to_folder_on_your_machine/
-input=example_image.nii.gz # make sure this file is inside $localfolder
+input=example_image.nii.gz 
 chmod ugo+rwx $localfolder
 sudo docker run -it --rm -v $localfolder:/data $name $cmd -i /data/$input -o /data/output.nii.gz -e 9 
 ```
 
 Notes: 
-- all anima binaries are stored in `/anima` folder inside the container. 
-- example_image.nii.gz is provided with this repository 
+- `example_image.nii.gz` is included in this repository 
+- please make sure that you place `example_image.nii.gz` is inside `$localfolder` on your file system 
+
+## Batch process multiple files with a custom Anima command, without entering the container: 
+
+For this you need to write a script: 
 
 
------
-
-
-
-
-
-
-
-
-
-MODIFY THE BELOW 
-
-6b. (run this only if you skipped the `optional` steps above)  Pull `anima` image from serge's dockerhub 
-
-Instead of building an `anima` docker image from scratch, 
-you can just pull my own (serge's) image from dockerhub. 
-Dockerhub is just like github, but for docker images. 
-
-Pull the image from dockerhub: 
-sudo docker pull sergeicu/anima_t2_only
-
-
-Web location for the docker image: 
-https://hub.docker.com/repository/docker/sergeicu/anima_t2_only
-
-
-You must make sure that you have the correct permissions to the directory with your data.  Specifically, the folder that you are mounting into docker must be `rwx` for all user groups. 
-
-Your data lives in `/data` folder specified above. Check this: 
-
-
-Run a script and process multiple files:   
+Write a script :   
 1. Create script.sh    
 2. Place it within Dockerfile directory   
 3. Add the following lines to Dockerfile build instructions (above CMD)  
