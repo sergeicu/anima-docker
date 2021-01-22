@@ -91,12 +91,12 @@ Notes:
 
 ## Batch process multiple files with a custom Anima command, without entering the container: 
 
-There are two options: 
-A. Write a script and place it locally inside the container (fast) 
-B. Write a script and invoke docker image externally for every file (slow) 
-
-For A. - you will need to re-build the Docker image. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/inside_docker.md).
-For B. - you can use the pre-built image that you pulled from Dockerhub. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/outside_docker.md).
+There are two options:    
+A. Write a script and place it locally inside the container (fast)    
+B. Write a script and invoke docker image externally for every file (slow)    
+  
+For A. - you will need to re-build the Docker image. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/inside_docker.md).   
+For B. - you can use the pre-built image that you pulled from Dockerhub. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/outside_docker.md).   
 
 # Suggestions / Improvements
 
