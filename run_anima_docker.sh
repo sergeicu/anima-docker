@@ -19,5 +19,5 @@
 # 1. If no .nii.gz files are found python script will indicate this via a specific error message 
 
 data=$1
-sudo docker run -it --rm -v $data:/data sergeicu/anima_t2_only_exec python run_anima.py /data
+sudo docker run -it --rm -v $data:/data sergeicu/anima_t2_only python run_anima.py /data
 
