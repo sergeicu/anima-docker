@@ -1,3 +1,10 @@
+"""Example script - fetches all nifti files inside a given folder and processes with example anima function. 
+
+Args: 
+     datain (str): fullpath to input directory in which nifti files are located. Must have read-write permissions for all users. 
+
+"""
+
 import os 
 import glob 
 import sys 
@@ -40,9 +47,9 @@ if __name__ == '__main__':
         if os.path.exists(output):
             continue
         
-        # run anima  
-        cmd = ["./animaGMMT2RelaxometryEstimation", "-e", "9", "-i", f, "-o", output, "-O", weights, "--out-m0", m0, "--out-b1", b1, "--out-sig", sigma_square]
-#         print(' '.join(cmd))
+        # example function 
+	# replace with another function or create a platform for running all arguments passed via sys.argv 
+        cmd = ["/anima/animaGMMT2RelaxometryEstimation", "-e", "9", "-i", f, "-o", output, "-O", weights, "--out-m0", m0, "--out-b1", b1, "--out-sig", sigma_square]
         execute(cmd)
 
 
@@ -52,5 +59,3 @@ if __name__ == '__main__':
 # Example of running anima from CLI     
 # ./animaGMMT2RelaxometryEstimation -e 9 -o out2.nii.gz -i volunteer1.nii.gz -O weights_im.nii.gz --out-m0 m0.nii.gz --out-b1 B1.nii.gz --out-sig sigma-square.nii.gz
     
-# Notes: 
-# datain=/fileserver/abd/serge/code/docker/anima/example_data 

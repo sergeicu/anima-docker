@@ -1,8 +1,12 @@
 #!/bin/bash
 
+# PURPOSE: 
+# Invoke docker container automatically and process files inside a given directory with src/run_anima.py script. 
+# Important - if you modify the contents of src/run_anima.py - you MUST rebuild the docker image.  
+
 # USAGE: 
-# chmod u+x run_anima_docker.sh 
-# ./run_anima_docker.sh <path_to_folder>
+# chmod u+x runs_python_script_inside_docker.sh 
+# ./runs_python_script_inside_docker.sh <path_to_folder>
 
 # IMPORTANT 
 # path_to_folder must have read-write permissions for ALL users: `chmod -R ugo+rwx <path_to_folder>`
