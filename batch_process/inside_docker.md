@@ -1,3 +1,5 @@
+# Placing your script inside docker
+
 We have provided a working example script that executes a specific Anima function on ALL .nii.gz files inside a given directory.  
 
 The script is located inside `src/run_anima.py`.  
@@ -11,3 +13,7 @@ In other words -
 
 However -   
 `sudo docker run --it --rm sergeicu/anima:latest /bin/bash` will place you directly inside the Docker container and will NOT invoke the python script. This is because the Dockerfile specifies `CMD ["python", "/run_anima.py"]`, instead of `ENTRYPOINT ["python", "/run_anima.py"]`
+
+# Running Docker from CLI 
+
+We also provide you with a simple wrapper script `runs_python_inside_docker.sh`. This script helps you to avoid typing the long command to invoke Docker container to process your files. Instead, you can just call this script and provide a folder name with your files to do your processing. 
