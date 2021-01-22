@@ -51,7 +51,7 @@ Use `$name` that follows dockerhub convention = <dockerhub_username>/<docker_nam
 
 
 ## Interactively:   
-`sudo docker run -it --rm $name`   
+`sudo docker run -it --rm $name /bin/bash`   
 
 Notes: 
 - type `exit` to kill the container 
@@ -63,7 +63,7 @@ Notes:
 ```
 localfolder=/full_path_to_folder_on_your_machine/
 chmod ugo+rw $localfolder 
-sudo docker run -it --rm -v $localfolder:/data $name
+sudo docker run -it --rm -v $localfolder:/data $name /bin/bash
 ```
 
 Notes: 
