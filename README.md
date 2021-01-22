@@ -61,7 +61,7 @@ Notes:
 ## Interactively, with access to your local filesystem. 
 
 ```
-localfolder=/full_path_to_folder_on_your_machine/
+localfolder=${PWD}/example_data/
 chmod ugo+rw $localfolder 
 sudo docker run -it --rm -v $localfolder:/data $name /bin/bash
 ```
@@ -92,11 +92,12 @@ Notes:
 ## Batch process multiple files with a custom Anima command, without entering the container: 
 
 There are two options:    
-A. Write a script and place it locally inside the container (fast)    
-B. Write a script and invoke docker image externally for every file (slow)    
-  
-For A. - you will need to re-build the Docker image. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/inside_docker.md).   
-For B. - you can use the pre-built image that you pulled from Dockerhub. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/outside_docker.md).   
+A. Write a simple bash or python script to do basic file processing (easy)   
+B. Write a python script with advanced functionalities that use external python libraries (advanced)    
+
+For A. - you can use the pre-built Docker image that you pulled from Dockerhub. Feel free to modify your script as many times as you want WITHOUT the need to rebuild the Docker container. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/outside_docker.md).   
+
+For B. - you will need to re-build the Docker image. You may need to do this, for example, if your python script needs to include extra python libraries that were NOT included in the original Dockerfile build. For this you will need to update Dockerfile to include those python libraries and then rebuild the Docker image. Example with instructions is provided [here](https://github.com/sergeicu/anima-docker/blob/main/batch_process/inside_docker.md).   
 
 # Suggestions / Improvements
 
