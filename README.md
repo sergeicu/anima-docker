@@ -49,6 +49,7 @@ Use `$name` that follows dockerhub convention = <dockerhub_username>/<docker_nam
 
 # Run 
 
+
 ## Interactively:   
 `sudo docker run -it --rm $name`   
 
@@ -61,12 +62,12 @@ Notes:
 
 ```
 localfolder=/full_path_to_folder_on_your_machine/
-chmod ugo+rwx $localfolder 
+chmod ugo+rw $localfolder 
 sudo docker run -it --rm -v $localfolder:/data $name
 ```
 
 Notes: 
-- `$localfolder` lives in `/data` inside the container 
+- `$localfolder` is mounted to `/data` inside the container 
 - you must give full read-write permissions to `$localfolder` for _all_ users to avoid Docker errors
 - all anima binaries are stored in `/anima` folder inside the container. 
 
@@ -77,15 +78,16 @@ An example with [Gaussian T2 mixture estimation](https://anima.readthedocs.io/en
 
 ```
 cmd=/anima/animaGMMT2RelaxometryEstimation
-localfolder=/full_path_to_folder_on_your_machine/
+localfolder=${PWD}/example_data/
+chmod ugo+rw $localfolder
 input=example_image.nii.gz 
-chmod ugo+rwx $localfolder
 sudo docker run -it --rm -v $localfolder:/data $name $cmd -i /data/$input -o /data/output.nii.gz -e 9 
 ```
 
 Notes: 
-- `example_image.nii.gz` is included in this repository 
+- `example_image.nii.gz` is included inside `example_data` folder in this repository 
 - please make sure that you place `example_image.nii.gz` is inside `$localfolder` on your file system 
+
 
 ## Batch process multiple files with a custom Anima command, without entering the container: 
 
