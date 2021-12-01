@@ -26,6 +26,8 @@ if __name__ == '__main__':
 
     # init 
     datain = sys.argv[1]
+    if len(sys.argv) > 2: 
+        te = sys.argv[2]
     
     # get all files
     files = glob.glob(datain+"/*.nii.gz")
@@ -49,7 +51,7 @@ if __name__ == '__main__':
         
         # example function 
 	# replace with another function or create a platform for running all arguments passed via sys.argv 
-        cmd = ["/animaGMMT2RelaxometryEstimation", "-e", "9", "-i", f, "-o", output, "-O", weights, "--out-m0", m0, "--out-b1", b1, "--out-sig", sigma_square]
+        cmd = ["/animaGMMT2RelaxometryEstimation", "-e", te, "-i", f, "-o", output, "-O", weights, "--out-m0", m0, "--out-b1", b1, "--out-sig", sigma_square]
         execute(cmd)
 
 
